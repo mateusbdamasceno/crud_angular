@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br" ng-app="crud">
+<head>  
+	<meta charset="UTF-8">
+    <title>Agenda Telefonica</title>  
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    
+          
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>     
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>     
+     
+          
+     <script src="angular.min.js"></script>
+     <script src="contatoController.js"></script>
+ </head>
+
+<body ng-controller="contatoController" style="background-collor: #c9e2b3">
+
+
+<div class="panel panel-default">
+	<div class="panel-heading"><span class="lead">Agenda Telefônica </span><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Adicionar</button></div>
+</div>
+
+<div class='col-sm-offset-4 col-sm-4'>
+	<h2>Contatos</h2>
+</div>
+
+
+<div class='col-sm-offset-1 col-sm-9'>
+	<table class="table table-hover">
+		<thead>
+		<tr>
+			<th style="border: 0px;">Nome</th>
+			<th style="border: 0px;">Telefone</th>
+		</tr>
+		</thead>
+		
+		<tbody>
+		<tr ng-repeat="contato in contatos">
+			<td>{{contato.nome}}</td>
+			<td>{{contato.telefone}}</td>
+			<td>
+				<button type="button" class="btn btn-warning" data-toggle="modal"
+					data-target="#myModal" ng-click="selecionaContato(contato)">Editar</button>
+				<button type="button" class="btn btn-danger" data-toggle="modal"
+					data-target="#myModalExcluir" ng-click="excluirContato()">Excluir</button>
+					        
+			</td>
+		</tbody>
+	</table>
+
+</div>
+
+<!-- modalCadastro-->
+<div class="modal fade" id="myModal" role="dialog">
+	<div class="modal-dialog">
+		
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times</button>
+				<h4 class="modal-title">Novo Contato</h4>
+			</div>
+			
+			<div class="modal-body">
+				<form class="form-horizontal" role="form">
+					<div class="form-group">
+						<label class="control-label col-sm-2">Nome</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" placeholder="Digite seu nome"
+							ng-model="novoContato.nome" required >
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label class="control-label col-sm-2">Telefone</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" placeholder="Digite seu telefone"
+							ng-model="novoContato.telefone" required >
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<div class="col-sm-offset-2 col-sm-10">
+							<button type="submit" class="btn btn-primary"
+							ng-click="salvar()" data-dimiss="modal">Salvar</button>
+						</div>
+					</div>
+					
+				</form>
+			
+			</div>
+			
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+			</div>
+			
+		</div>
+	</div>
+</div>
+	
+    
+</body>
+</html>
